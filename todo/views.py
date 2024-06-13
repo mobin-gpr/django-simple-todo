@@ -1,6 +1,6 @@
 from django.http import Http404
 from django.views import View
-from django.views.generic import ListView, CreateView, UpdateView
+from django.views.generic import ListView, CreateView
 from todo.models import Task
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy

@@ -4,6 +4,8 @@ from .models import Task
 
 @admin.register(Task)
 class TaskAdmin(admin.ModelAdmin):
+    """Customized admin for Task model."""
+
     list_display = ("title", "user", "created_at", "completed")
     list_filter = ("user", "completed")
     search_fields = ("title", "user")
