@@ -29,10 +29,12 @@
 
                         <h4 class="text-center my-3 pb-3">To Do App</h4>
 
-                        <form class="row row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2">
+                        <form method="post" action="{% url 'task_create' %}"
+                              class="row row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2">
+                            {% csrf_token %}
                             <div class="col-12">
                                 <div class="form-outline">
-                                    <input type="text" id="form1" class="form-control"/>
+                                    {{ form.title }}
                                     <label class="form-label" for="form1">Enter a task here</label>
                                 </div>
                             </div>
@@ -56,33 +58,30 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Buy groceries for next week</td>
-                                <td>In progress</td>
-                                <td>
-                                    <button type="submit" class="btn btn-danger">Delete</button>
-                                    <button type="submit" class="btn btn-success ms-1">Finished</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Renew car insurance</td>
-                                <td>In progress</td>
-                                <td>
-                                    <button type="submit" class="btn btn-danger">Delete</button>
-                                    <button type="submit" class="btn btn-success ms-1">Finished</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Sign up for online course</td>
-                                <td>In progress</td>
-                                <td>
-                                    <button type="submit" class="btn btn-danger">Delete</button>
-                                    <button type="submit" class="btn btn-success ms-1">Finished</button>
-                                </td>
-                            </tr>
+                            {% for task in tasks %}
+                                <tr>
+                                    <th scope="row">{{ forloop.counter }}</th>
+
+                                    {% if task.completed %}
+                                        <td>
+                                            <del>{{ task.title }}</del>
+                                        </td>
+                                        <td>Done</td>
+                                    {% else %}
+                                        <td>{{ task.title }}</td>
+                                        <td>In progress</td>
+                                    {% endif %}
+                                    <td>
+                                        <a href="{% url 'task_delete' task.pk %}">
+                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                        </a>
+                                        <a href="{% url 'task_completed' task.pk %}">
+                                            <button type="submit" class="btn btn-success ms-1">Finished</button>
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+
                             </tbody>
                         </table>
 
@@ -95,7 +94,7 @@
 <!-- End your project here-->
 
 <!-- MDB -->
-<script type="text/javascript" src="js/mdb.min.js"></script>
+<script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script>
 <!-- Custom scripts -->
 <script type="text/javascript"></script>
 </body>
