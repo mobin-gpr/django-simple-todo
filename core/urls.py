@@ -22,6 +22,7 @@ from django.conf import settings
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("todo", include('todo.urls')),
 ]
 
 # add static files urls
