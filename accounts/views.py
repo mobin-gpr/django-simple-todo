@@ -1,8 +1,10 @@
+from django.views import View
 from django.views.generic.edit import FormView
 from django.contrib.auth.views import LoginView
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
+from django.contrib.auth import logout
 from .forms import SignupForm, SignInForm
-
+from django.shortcuts import redirect
 
 class SignUp(FormView):
     """Create a new user."""
@@ -28,3 +30,11 @@ class SignIn(LoginView):
 
     def get_success_url(self):
         return reverse_lazy("task_list")
+
+
+
+
+class Logout(View):
+    def get(self, request):
+        logout(request)
+        return redirect(reverse('sign_in'))
