@@ -22,6 +22,11 @@ Go to the project directory
 ```bash
 cd django-simple-todo
 ```
+Install dependencies
+```bash
+pip install -r requirements.txt
+```
+
 Run the project
 
 ```bash
