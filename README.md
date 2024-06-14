@@ -14,18 +14,18 @@ Todo is a project for planning daily tasks developed on the back-end side by Dja
 Clone the project
 
 ```bash
-  git clone https://github.com/mobin-gpr/fox-web-api.git
+git clone https://github.com/mobin-gpr/fox-web-api.git
 ```
 
 Go to the project directory
 
 ```bash
-  cd django-simple-todo
+cd django-simple-todo
 ```
 Run the project
 
 ```bash
-  python manage.py runserver
+python manage.py runserver
 ```
 
 ## License
