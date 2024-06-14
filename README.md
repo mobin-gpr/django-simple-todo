@@ -14,7 +14,7 @@ Todo is a project for planning daily tasks developed on the back-end side by Dja
 Clone the project
 
 ```bash
-git clone https://github.com/mobin-gpr/fox-web-api.git
+git clone https://github.com/mobin-gpr/django-simple-todo.git
 ```
 
 Go to the project directory
