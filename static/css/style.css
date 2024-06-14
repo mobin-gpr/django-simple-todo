@@ -590,3 +590,6 @@ label.valid {
     margin-bottom: 10px; } }
 
 /*# sourceMappingURL=style.css.map */
+.lock {
+  top: 20% !important;
+}
